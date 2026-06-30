@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>{% block title %}SyncSave{% endblock %} · Synchrony</title>
+  <link rel="stylesheet" href="/static/synchrony.css">
+  {% block head %}{% endblock %}
+</head>
+<body>
+  <div class="app-shell">
+    <header class="syf-header">
+      {% block header_left %}
+      <a href="#" class="back-btn" onclick="history.back(); return false;" aria-label="Back">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </a>
+      {% endblock %}
+      <div class="syf-header-center">
+        <span class="syf-brand">Synchrony</span>
+        <span class="syf-feature">{% block feature_name %}SyncSave{% endblock %}</span>
+      </div>
+      {% block header_right %}<span class="header-spacer"></span>{% endblock %}
+    </header>
+
+    <main class="syf-main">
+      {% block content %}{% endblock %}
+    </main>
+
+    {% block footer %}{% endblock %}
+  </div>
+  {% block scripts %}{% endblock %}
+</body>
+</html>
