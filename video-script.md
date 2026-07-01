@@ -1,4 +1,4 @@
-# SyncCents — Video Script
+# sync-cents — Video Script
 **Estimated runtime:** 8–10 minutes  
 **Format:** Product demo + technical walkthrough  
 **Audience:** General viewers interested in fintech UX; developers reviewing the implementation
@@ -6,28 +6,28 @@
 ---
 
 ## SCENE 1 — Cold open
-**[VISUAL]** Synchrony-style mobile UI. Yellow hero banner. SyncCents balance ticking up cent by cent.  
-**[ON SCREEN]** Title: *SyncCents — A Synchrony Savings Extension*
+**[VISUAL]** Synchrony-style mobile UI. Yellow hero banner. sync-cents balance ticking up cent by cent.  
+**[ON SCREEN]** Title: *sync-cents — A Synchrony Savings Extension*
 
 **NARRATOR:**  
-Most people know they should save money. Fewer people actually do it consistently. SyncCents is a feature built into the Synchrony mobile experience that solves that gap — not with big transfers you have to remember, but with small, automatic daily deposits driven by your real spending habits.
+Most people know they should save money. Fewer people actually do it consistently. sync-cents is a feature built into the Synchrony mobile experience that solves that gap — not with big transfers you have to remember, but with small, automatic daily deposits driven by your real spending habits.
 
-Today we'll walk through what SyncCents does for the user, and then go under the hood — the functions, APIs, and algorithms that make it work.
+Today we'll walk through what sync-cents does for the user, and then go under the hood — the functions, APIs, and algorithms that make it work.
 
 ---
 
-## SCENE 2 — What SyncCents is
-**[VISUAL]** Diagram: Synchrony app shell with Accounts tab, SyncCents tab, Settings tab.  
+## SCENE 2 — What sync-cents is
+**[VISUAL]** Diagram: Synchrony app shell with Accounts tab, sync-cents tab, Settings tab.  
 **[ON SCREEN]** *Not a standalone app — an integrated extension*
 
 **NARRATOR:**  
-SyncCents is intentionally not a separate application. It's an extension embedded inside the Synchrony app shell. Users navigate to it from the same tab bar they use for accounts and settings. The UI follows Synchrony's white-and-gold design language — clean headers, mobile-first layout, and a familiar enrollment flow that mirrors first-time Synchrony setup.
+sync-cents is intentionally not a separate application. It's an extension embedded inside the Synchrony app shell. Users navigate to it from the same tab bar they use for accounts and settings. The UI follows Synchrony's white-and-gold design language — clean headers, mobile-first layout, and a familiar enrollment flow that mirrors first-time Synchrony setup.
 
-At a high level, SyncCents does three things:
+At a high level, sync-cents does three things:
 
 1. **Analyzes spending** — it reviews linked account activity and breaks it down by category.  
 2. **Recommends a daily savings amount** — an algorithm suggests how many cents per day you can afford to save.  
-3. **Auto-deposits into savings** — when your checking balance stays above a safety threshold you set, SyncCents quietly moves that daily amount into your savings account.
+3. **Auto-deposits into savings** — when your checking balance stays above a safety threshold you set, sync-cents quietly moves that daily amount into your savings account.
 
 ---
 
@@ -36,7 +36,7 @@ At a high level, SyncCents does three things:
 **[ON SCREEN]** Step 1 → Step 2 → Step 3 → Step 4
 
 **NARRATOR:**  
-When a user opens SyncCents for the first time, they hit a four-step onboarding flow — all client-side steps, backed by a single API call at the end.
+When a user opens sync-cents for the first time, they hit a four-step onboarding flow — all client-side steps, backed by a single API call at the end.
 
 **Step 1 — Welcome.**  
 Purely informational. Explains micro-savings: save a little every day, personalized to your spending, with no ongoing effort.
@@ -48,7 +48,7 @@ Here the app calls `GET /api/onboarding`. On the backend, that triggers `SyncCen
 This is the core user decision: how many cents per day to save. The app displays a **suggested amount** computed by `suggest_daily_contribution()`. The user can accept the suggestion with one tap or enter their own value. A live projection shows the monthly and yearly impact.
 
 **Step 4 — Safety balance.**  
-Users set a **minimum checking balance threshold**. SyncCents will only deposit when the account stays above this floor — protecting bill money from automatic transfers. When they tap "Enroll," the frontend sends `POST /api/enroll` with their daily cents and threshold. The backend calls `SyncCents.enroll()`, sets `enrolled = true` in persistent storage, and redirects to the home page.
+Users set a **minimum checking balance threshold**. sync-cents will only deposit when the account stays above this floor — protecting bill money from automatic transfers. When they tap "Enroll," the frontend sends `POST /api/enroll` with their daily cents and threshold. The backend calls `SyncCents.enroll()`, sets `enrolled = true` in persistent storage, and redirects to the home page.
 
 **[ON SCREEN]**  
 ```
@@ -64,11 +64,11 @@ POST /api/enroll
 **[ON SCREEN]** `GET /api/home`
 
 **NARRATOR:**  
-After enrollment, the user lands on the SyncCents home page at `/synccents`. Every time this page loads, the frontend calls `GET /api/home`. That endpoint does something important before returning data: it automatically runs `sync_cents()`.
+After enrollment, the user lands on the sync-cents home page at `/synccents`. Every time this page loads, the frontend calls `GET /api/home`. That endpoint does something important before returning data: it automatically runs `sync_cents()`.
 
 The home page shows:
 
-- **SyncCents balance** — total savings accumulated.  
+- **sync-cents balance** — total savings accumulated.  
 - **Today's deposit** — whether today's micro-transfer happened, is pending, or was skipped.  
 - **Daily rate and monthly projection** — based on the enrolled contribution.  
 - **A 14-day deposit feed** — each day marked as deposited or missed.  
@@ -91,10 +91,10 @@ Settings live on a dedicated page — not mixed into the home screen. Users reac
 
 ## SCENE 6 — Architecture overview
 **[VISUAL]** Layered architecture diagram animating in.  
-**[ON SCREEN]** Browser → Flask → SyncCents engine → JSON file
+**[ON SCREEN]** Browser → Flask → sync-cents engine → JSON file
 
 **NARRATOR:**  
-Let's talk about how this is built technically. SyncCents uses a classic three-tier structure:
+Let's talk about how this is built technically. sync-cents uses a classic three-tier structure:
 
 **Presentation layer** — Jinja2 HTML templates (`base.html`, `onboarding.html`, `home.html`, `settings.html`), styled with `synchrony.css`, and driven by page-specific JavaScript files that call the REST API with `fetch`.
 
@@ -243,7 +243,7 @@ Expenses track amount, category, description, and ISO date. Auto-deposits track 
 **[VISUAL]** Terminal commands. Browser at localhost:5050.
 
 **NARRATOR:**  
-To run SyncCents locally:
+To run sync-cents locally:
 
 ```bash
 cd dory
@@ -284,10 +284,10 @@ All business rules live in Python. The JavaScript files only fetch, render, and 
 
 ## SCENE 12 — Closing
 **[VISUAL]** Home page with streak growing. Synchrony logo fade.  
-**[ON SCREEN]** *SyncCents — save without thinking*
+**[ON SCREEN]** *sync-cents — save without thinking*
 
 **NARRATOR:**  
-SyncCents turns saving from a willpower problem into a background process. Users enroll once, set a daily amount informed by their real spending, and watch cents accumulate into meaningful savings over weeks and months.
+sync-cents turns saving from a willpower problem into a background process. Users enroll once, set a daily amount informed by their real spending, and watch cents accumulate into meaningful savings over weeks and months.
 
 Technically, it's a Flask extension with a focused Python engine, a REST API, JSON persistence, and a mobile-first UI styled as part of Synchrony — with clear separation between onboarding, daily dashboard, and settings.
 

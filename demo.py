@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Quick demo of SyncCents from the command line."""
+"""Quick demo of sync-cents from the command line."""
 
 from synccents import SyncCents, sync_cents
 
-print("=== SyncCents Demo ===\n")
+print("=== sync-cents Demo ===\n")
 
 # Standalone one-off function
 result = sync_cents(

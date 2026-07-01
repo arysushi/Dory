@@ -48,7 +48,7 @@ function render(data) {
       <span class="feed-date">${d.label}</span>
       ${d.deposited
         ? `<span class="feed-amount">+${fmt(d.amount)}</span>`
-        : `<span class="feed-amount missed">${d.label === "Today" && data.can_deposit_today ? "Pending" : "—"}</span>`
+        : `<span class="feed-amount missed">${d.label === "Today" && data.can_deposit_today ? "Pending" : "1.00"}</span>`
       }
     </div>
   `).join("");

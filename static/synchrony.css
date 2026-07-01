@@ -67,7 +67,6 @@ body {
 
 .syf-brand {
   font-size: 0.65rem;
-  text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--syf-muted);
   font-weight: 600;

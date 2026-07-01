@@ -1,7 +1,7 @@
 """
-SyncCents — tracks spending, recommends savings, and auto-deposits spare change.
+sync-cents — tracks spending, recommends savings, and auto-deposits spare change.
 
-When your checking balance stays above a threshold you set, SyncCents quietly
+When your checking balance stays above a threshold you set, sync-cents quietly
 moves a few cents into savings so progress happens without willpower.
 """
 
@@ -392,7 +392,7 @@ class SyncCents:
 
     def sync_cents(self) -> Optional[AutoDeposit]:
         """
-        Daily SyncCents: if checking balance exceeds threshold and no deposit
+        Daily sync-cents: if checking balance exceeds threshold and no deposit
         yet today, move daily_contribution_cents into savings.
         """
         today_key = datetime.now().strftime("%Y-%m-%d")
@@ -472,7 +472,7 @@ def sync_cents(
     savings_balance: float = 0.0,
 ) -> dict:
     """
-    Standalone SyncCents function for one-off micro-deposit checks.
+    Standalone sync-cents function for one-off micro-deposit checks.
 
     Returns a dict with whether a deposit occurred and updated balances.
     """

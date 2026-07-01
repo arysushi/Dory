@@ -1,4 +1,4 @@
-"""SyncCents — Synchrony app extension."""
+"""sync-cents — Synchrony app extension."""
 
 from flask import Flask, jsonify, redirect, render_template, request, url_for
 

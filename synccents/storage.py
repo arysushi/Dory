@@ -1,4 +1,4 @@
-"""JSON file persistence for SyncCents data."""
+"""JSON file persistence for sync-cents data."""
 
 import json
 import os
