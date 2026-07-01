@@ -1,21 +1,24 @@
 {% extends "base.html" %}
-{% block title %}Enroll in SyncSave{% endblock %}
 {% block header_left %}<span class="header-spacer"></span>{% endblock %}
 
 {% block content %}
 <div class="onboarding" id="onboarding">
 
-  <!-- Step 1: Welcome -->
+  <!-- ═══════════════════════════════════════════════════════════════
+       ONBOARDING TEXT — Step 1: Welcome
+       Edit headings, lead paragraph, and benefit bullets below.
+       ═══════════════════════════════════════════════════════════════ -->
   <section class="step active" data-step="1">
     <div class="step-hero yellow-band">
-      <div class="syf-icon">
-        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-          <circle cx="24" cy="24" r="24" fill="#FDB913"/>
-          <path d="M16 28c0-4 3.5-8 8-8s8 4 8 8" stroke="#1a1a1a" stroke-width="2.5" stroke-linecap="round"/>
-          <path d="M20 20v-2M28 20v-2" stroke="#1a1a1a" stroke-width="2.5" stroke-linecap="round"/>
-        </svg>
-      </div>
-      <h1>Meet SyncSave</h1>
+      <!-- TOP IMAGE: drop your file at static/images/synccents-header.png
+           (or change the src path below to match your filename) -->
+      <img
+        class="onboarding-hero-img"
+        src="/static/images/synccent.png"
+        onerror="this.onerror=null; this.src='/static/images/synccents-header.svg';"
+        alt="SYNC-CENTS"
+      >
+      
       <p class="lead">A new way to save — built right into your Synchrony account.</p>
     </div>
     <div class="step-body">
@@ -47,7 +50,7 @@
     <div class="step-dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
   </section>
 
-  <!-- Step 2: Spending analysis -->
+  <!-- ONBOARDING TEXT — Step 2: Spending analysis -->
   <section class="step" data-step="2">
     <div class="step-body">
       <p class="eyebrow">Step 1 of 3</p>
@@ -65,7 +68,7 @@
     <div class="step-dots"><span class="dot"></span><span class="dot active"></span><span class="dot"></span><span class="dot"></span></div>
   </section>
 
-  <!-- Step 3: Daily contribution -->
+  <!-- ONBOARDING TEXT — Step 3: Daily contribution -->
   <section class="step" data-step="3">
     <div class="step-body">
       <p class="eyebrow">Step 2 of 3</p>
@@ -93,7 +96,7 @@
     <div class="step-dots"><span class="dot"></span><span class="dot"></span><span class="dot active"></span><span class="dot"></span></div>
   </section>
 
-  <!-- Step 4: Threshold & confirm -->
+  <!-- ONBOARDING TEXT — Step 4: Safety balance & enroll -->
   <section class="step" data-step="4">
     <div class="step-body">
       <p class="eyebrow">Step 3 of 3</p>
@@ -110,7 +113,7 @@
 
       <div class="confirm-card" id="confirm-summary"></div>
 
-      <button class="btn btn-primary btn-full" onclick="enroll()">Enroll in SyncSave</button>
+      <button class="btn btn-primary btn-full" onclick="enroll()">Enroll in SYNC-CENTS</button>
       <p class="legal">By enrolling, you authorize Synchrony to transfer your daily contribution from checking to savings when your balance is above your threshold.</p>
     </div>
     <div class="step-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot active"></span></div>

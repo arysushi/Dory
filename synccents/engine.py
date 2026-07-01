@@ -1,7 +1,7 @@
 """
-SyncSave — tracks spending, recommends savings, and auto-deposits spare change.
+SyncCents — tracks spending, recommends savings, and auto-deposits spare change.
 
-When your checking balance stays above a threshold you set, SyncSave quietly
+When your checking balance stays above a threshold you set, SyncCents quietly
 moves a few cents into savings so progress happens without willpower.
 """
 
@@ -22,7 +22,7 @@ from .storage import DEFAULT_DATA_PATH, load_data, save_data
 from .tips import GENERAL_TIPS, tip_for_category
 
 
-class SyncSave:
+class SyncCents:
     """Personal savings coach with expense tracking and micro-deposits."""
 
     def __init__(self, data_path: Path = DEFAULT_DATA_PATH):
@@ -390,9 +390,9 @@ class SyncSave:
         }
 
 
-    def sync_save(self) -> Optional[AutoDeposit]:
+    def sync_cents(self) -> Optional[AutoDeposit]:
         """
-        Daily SyncSave: if checking balance exceeds threshold and no deposit
+        Daily SyncCents: if checking balance exceeds threshold and no deposit
         yet today, move daily_contribution_cents into savings.
         """
         today_key = datetime.now().strftime("%Y-%m-%d")
@@ -465,14 +465,14 @@ class SyncSave:
         save_data(self._state, self.data_path)
 
 
-def sync_save(
+def sync_cents(
     checking_balance: float,
     min_balance_threshold: float,
     deposit_cents: int = 50,
     savings_balance: float = 0.0,
 ) -> dict:
     """
-    Standalone SyncSave function for one-off micro-deposit checks.
+    Standalone SyncCents function for one-off micro-deposit checks.
 
     Returns a dict with whether a deposit occurred and updated balances.
     """

@@ -1,4 +1,4 @@
-"""Data models for SyncSave."""
+"""Data models for SyncCents."""
 
 from dataclasses import dataclass, field, asdict
 from datetime import datetime

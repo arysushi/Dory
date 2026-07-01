@@ -1,9 +1,9 @@
-from .engine import SyncSave, sync_save
+from .engine import SyncCents, sync_cents
 from .models import Expense, ExpenseCategory, SavingsRecommendation, SpendingInsight
 
 __all__ = [
-    "SyncSave",
-    "sync_save",
+    "SyncCents",
+    "sync_cents",
     "Expense",
     "ExpenseCategory",
     "SavingsRecommendation",

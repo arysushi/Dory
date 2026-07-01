@@ -1,22 +1,22 @@
 #!/usr/bin/env python3
-"""Quick demo of SyncSave from the command line."""
+"""Quick demo of SyncCents from the command line."""
 
-from syncsave import SyncSave, sync_save
+from synccents import SyncCents, sync_cents
 
-print("=== SyncSave Demo ===\n")
+print("=== SyncCents Demo ===\n")
 
 # Standalone one-off function
-result = sync_save(
+result = sync_cents(
     checking_balance=750.00,
     min_balance_threshold=500.00,
     deposit_cents=50,
     savings_balance=120.00,
 )
-print("One-off sync_save():")
+print("One-off sync_cents():")
 print(f"  {result['message']}\n")
 
 # Full tracker
-ss = SyncSave()
+ss = SyncCents()
 ss.configure(
     monthly_income=3500,
     min_balance_threshold=500,
@@ -45,7 +45,7 @@ print("\nTips:")
 for tip in rec.tips:
     print(f"  • {tip}")
 
-deposit = ss.sync_save()
+deposit = ss.sync_cents()
 if deposit:
     print(f"\nAuto-deposited ${deposit.amount:.2f}!")
     print(f"Checking now: ${ss.checking_balance:.2f}, Savings: ${ss.savings_balance:.2f}")

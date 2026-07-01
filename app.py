@@ -1,12 +1,12 @@
-"""SyncSave — Synchrony app extension."""
+"""SyncCents — Synchrony app extension."""
 
 from flask import Flask, jsonify, redirect, render_template, request, url_for
 
-from syncsave import SyncSave
-from syncsave.models import ExpenseCategory
+from synccents import SyncCents
+from synccents.models import ExpenseCategory
 
 app = Flask(__name__)
-ss = SyncSave()
+ss = SyncCents()
 
 
 @app.route("/")
@@ -16,21 +16,21 @@ def index():
     return redirect(url_for("onboarding"))
 
 
-@app.route("/syncsave/onboarding")
+@app.route("/synccents/onboarding")
 def onboarding():
     if ss.enrolled:
         return redirect(url_for("home"))
     return render_template("onboarding.html")
 
 
-@app.route("/syncsave")
+@app.route("/synccents")
 def home():
     if not ss.enrolled:
         return redirect(url_for("onboarding"))
     return render_template("home.html")
 
 
-@app.route("/syncsave/settings")
+@app.route("/synccents/settings")
 def settings():
     if not ss.enrolled:
         return redirect(url_for("onboarding"))
@@ -62,19 +62,19 @@ def enroll():
 @app.route("/api/reset-enrollment", methods=["POST"])
 def reset_enrollment():
     ss.reset_enrollment()
-    return jsonify({"enrolled": False, "redirect": "/syncsave/onboarding"})
+    return jsonify({"enrolled": False, "redirect": "/synccents/onboarding"})
 
 
 @app.route("/api/home")
 def home_data():
     # Auto-run today's deposit if eligible
-    ss.sync_save()
+    ss.sync_cents()
     return jsonify(ss.get_home_summary())
 
 
 @app.route("/api/sync", methods=["POST"])
 def run_sync():
-    deposit = ss.sync_save()
+    deposit = ss.sync_cents()
     return jsonify({
         "deposit": deposit.to_dict() if deposit else None,
         "home": ss.get_home_summary(),

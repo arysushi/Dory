@@ -1,11 +1,11 @@
-"""JSON file persistence for SyncSave data."""
+"""JSON file persistence for SyncCents data."""
 
 import json
 import os
 from pathlib import Path
 from typing import Any
 
-DEFAULT_DATA_PATH = Path(__file__).parent.parent / "data" / "syncsave.json"
+DEFAULT_DATA_PATH = Path(__file__).parent.parent / "data" / "synccents.json"
 
 
 def load_data(path: Path = DEFAULT_DATA_PATH) -> dict[str, Any]:

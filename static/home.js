@@ -16,7 +16,7 @@ async function loadHome() {
 
 async function returnToEnrollment() {
   await fetch("/api/reset-enrollment", { method: "POST" });
-  window.location.href = "/syncsave/onboarding";
+  window.location.href = "/synccents/onboarding";
 }
 
 function render(data) {

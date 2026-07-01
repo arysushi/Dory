@@ -86,7 +86,7 @@ async function enroll() {
     }),
   });
 
-  window.location.href = "/syncsave";
+  window.location.href = "/synccents";
 }
 
 $("daily-cents").addEventListener("input", updateProjection);

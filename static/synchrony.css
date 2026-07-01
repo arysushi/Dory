@@ -76,6 +76,7 @@ body {
 .syf-feature {
   font-size: 1rem;
   font-weight: 600;
+  letter-spacing: 0.06em;
 }
 
 /* ── Main ─────────────────────────────────────── */
@@ -172,6 +173,15 @@ body {
   text-align: center;
 }
 
+.onboarding-hero-img {
+  display: block;
+  width: min(280px, 85%);
+  height: auto;
+  margin: 0 auto;
+  border-radius: 12px;
+  object-fit: contain;
+}
+
 .yellow-band {
   background: linear-gradient(180deg, var(--syf-yellow-light) 0%, var(--syf-white) 100%);
 }
@@ -180,6 +190,7 @@ body {
   font-size: 1.75rem;
   margin-top: 1rem;
   font-weight: 700;
+  letter-spacing: 0.04em;
 }
 
 .lead {
